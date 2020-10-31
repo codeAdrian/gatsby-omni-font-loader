@@ -1,0 +1,24 @@
+{
+  "name": "gatsby-omni-font-loader",
+  "version": "1.0.0",
+  "description": "Font loader optimized for maximum performance. Removes render-blocking font resources and loads them asynchronusly. Handle FOUT & FOUC with font loading status watcher. Supports both local-hosted fonts and web fonts.",
+  "keywords": [
+    "gatsby-plugin",
+    "gatsby",
+    "plugin",
+    "async",
+    "frontend",
+    "web",
+    "font",
+    "loader",
+    "google",
+    "webfont",
+    "local",
+    "custom"
+  ],
+  "author": "Adrian Bece <adrianbece@live.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "gatsby": ">=1"
+  }
+}

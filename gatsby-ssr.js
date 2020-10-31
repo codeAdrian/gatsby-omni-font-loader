@@ -1,15 +1,17 @@
-import { getFontConfig, getTestFonts } from "./utils"
+import {
+  getFontConfig,
+  getFontFiles,
+  getFontNames,
+  getTestFonts,
+} from "./utils"
 
 export const onRenderBody = (
   { setHeadComponents, setPostBodyComponents },
   { enableListener, preconnect, web, custom }
 ) => {
   const allFonts = [...web, ...custom]
-  const preload = allFonts.map(({ file }) => file)
-  const fontNames = []
-  allFonts.forEach(({ name }) =>
-    Array.isArray(name) ? fontNames.push(...name) : fontNames.push(name)
-  )
+  const preload = getFontFiles(allFonts)
+  const fontNames = getFontNames(allFonts)
 
   const hasPreconnect = Boolean(preconnect.length)
   const hasPreload = Boolean(preload.length)

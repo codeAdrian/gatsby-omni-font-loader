@@ -2,15 +2,12 @@
 
 Performant asynchronous font loading plugin for Gatsby.
 
-:globe_with_meridians: Supports web fonts
-<br/><br/>
-:house: Suports self-hosted fonts
-<br/><br/>
-:trident: Loads fonts asynchronously to avoid render blocking
-<br/><br/>
-:stopwatch: Implemented with [fast loading snippets](https://csswizardry.com/2020/05/the-fastest-google-fonts/)
-<br/><br/>
-:eyes: Loading status watcher for avoiding FOUT & FOUC
+* Supports web fonts & self-hosted fonts
+* Suports self-hosted fonts
+* Preloads the files & preconnects to the URL
+* Loads fonts asynchronously to avoid render blocking
+* Implemented with [fast loading snippets](https://csswizardry.com/2020/05/the-fastest-google-fonts/)
+* Loading status listener for avoiding FOUT & FOUC
 
 ## Install
 
@@ -41,14 +38,18 @@ Add the following snippet to `gatsby-config.js` plugins array.
     /* Self-hosted fonts config. Add font files and font CSS files to "static" folder */
     custom: [
       {
+        /* Exact name of the font as defied in @font-face CSS rule */
         name: ["Font Awesome 5 Brands", "Font Awesome 5 Free"],
+        /* Path to the font CSS file inside the "static" folder with @font-face definition */
         file: "/fonts/fontAwesome/css/all.min.css",
       },
     ],
 
     /* Web fonts. File link should point to font CSS file. */
     web: [{
+        /* Exact name of the font as defied in @font-face CSS rule */
         name: "Staatliches",
+        /* URL to the font CSS file with @font-face definition */
         file: "https://fonts.googleapis.com/css2?family=Staatliches",
       },
     ],
@@ -56,7 +57,7 @@ Add the following snippet to `gatsby-config.js` plugins array.
 }
 ```
 
-## Handling FOUC with Font loading watcher
+## Handling FOUC with Font loading listener
 
 When loading fonts asynchronously, Flash Of Unstyled Content (FOUC) might happen because fonts load few moments later after page is displayed to the user.
 
@@ -79,7 +80,7 @@ Here is the example of how `body` element will look like after all fonts are bei
 
 ## Issues and Contributions
 
-Feel free to report and issues in the "Issues tab" and feel free to contribute to the project by creating Pull Requests.
+Feel free to [report issues](https://github.com/codeAdrian/gatsby-omni-font-loader/issues) you find and feel free to contribute to the project by creating Pull Requests.
 
 Contributions are welcome and appreciated!
 

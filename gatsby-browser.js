@@ -1,16 +1,14 @@
-import { AsyncFonts, FontListener } from "./components"
 import React from "react"
+import { AsyncFonts, FontListener } from "./components"
+import { getFontFiles, getFontNames } from "./utils"
 
 export const wrapRootElement = (
   { element },
   { custom, web, enableListener }
 ) => {
   const allFonts = [...custom, ...web]
-  const fontNames = []
-  const fontFiles = allFonts.map(({ file }) => file)
-  allFonts.forEach(({ name }) =>
-    Array.isArray(name) ? fontNames.push(...name) : fontNames.push(name)
-  )
+  const fontFiles = getFontFiles(allFonts)
+  const fontNames = getFontNames(allFonts)
 
   const hasFontFiles = Boolean(fontFiles.length)
   const hasFontNames = Boolean(fontNames.length)

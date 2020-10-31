@@ -3,14 +3,22 @@
 Performant asynchronous font loading plugin for Gatsby.
 
 :globe_with_meridians: Supports web fonts
-<br/>
+<br/><br/>
 :house: Suports self-hosted fonts
-<br/>
+<br/><br/>
 :trident: Loads fonts asynchronously to avoid render blocking
-<br/>
+<br/><br/>
 :stopwatch: Implemented with [fast loading snippets](https://csswizardry.com/2020/05/the-fastest-google-fonts/)
-<br/>
+<br/><br/>
 :eyes: Loading status watcher for avoiding FOUT & FOUC
+
+## Install
+
+`npm install --save-dev gatsby-omni-font-loader`
+
+or
+
+`yarn add --dev gatsby-omni-font-loader`
 
 ## Configuration
 

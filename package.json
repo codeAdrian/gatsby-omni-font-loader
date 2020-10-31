@@ -18,6 +18,14 @@
   ],
   "author": "Adrian Bece <adrianbece@live.com>",
   "license": "MIT",
+  "homepage": "https://github.com/codeAdrian/gatsby-omni-font-loader",
+  "bugs": {
+    "url": "https://github.com/codeAdrian/gatsby-omni-font-loader/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codeAdrian/gatsby-omni-font-loader"
+  },
   "peerDependencies": {
     "gatsby": ">=1"
   }

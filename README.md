@@ -3,11 +3,11 @@
 Performant asynchronous font loading plugin for Gatsby.
 
 * Supports web fonts & self-hosted fonts
-* Suports self-hosted fonts
 * Preloads the files & preconnects to the URL
 * Loads fonts asynchronously to avoid render blocking
 * Implemented with [fast loading snippets](https://csswizardry.com/2020/05/the-fastest-google-fonts/)
 * Loading status listener for avoiding FOUT & FOUC
+* Small size & minimal footprint
 
 ## Install
 

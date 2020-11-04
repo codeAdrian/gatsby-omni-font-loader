@@ -4,7 +4,7 @@ import { getFontFiles, getFontNames } from "./utils"
 
 export const wrapRootElement = (
   { element },
-  { custom, web, enableListener }
+  { custom = [], web = [], enableListener }
 ) => {
   const allFonts = [...custom, ...web]
   const fontFiles = getFontFiles(allFonts)

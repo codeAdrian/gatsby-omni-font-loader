@@ -7,7 +7,7 @@ import {
 
 export const onRenderBody = (
   { setHeadComponents, setPostBodyComponents },
-  { enableListener, preconnect, web, custom }
+  { enableListener, preconnect = [], web = [], custom = [] }
 ) => {
   const allFonts = [...web, ...custom]
   const preload = getFontFiles(allFonts)

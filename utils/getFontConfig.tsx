@@ -6,22 +6,34 @@ export const getFontConfig = (
 ) => {
   const headComponents = []
 
-  preconnectConfig.forEach(href => {
-    headComponents.push(
-      <link
-        key={`preconnect-${href}`}
-        rel="preconnect"
-        href={href}
-        crossOrigin="true"
-      />
-    )
-  })
+  if (
+    preconnectConfig &&
+    Array.isArray(preconnectConfig) &&
+    Boolean(preconnectConfig.length)
+  ) {
+    preconnectConfig.forEach(href => {
+      headComponents.push(
+        <link
+          key={`preconnect-${href}`}
+          rel="preconnect"
+          href={href}
+          crossOrigin="true"
+        />
+      )
+    })
+  }
 
-  preloadConfig.forEach(href => {
-    headComponents.push(
-      <link key={`preload-${href}`} rel="preload" as="style" href={href} />
-    )
-  })
+  if (
+    preloadConfig &&
+    Array.isArray(preloadConfig) &&
+    Boolean(preloadConfig.length)
+  ) {
+    preloadConfig.forEach(href => {
+      headComponents.push(
+        <link key={`preload-${href}`} rel="preload" as="style" href={href} />
+      )
+    })
+  }
 
   return headComponents
 }

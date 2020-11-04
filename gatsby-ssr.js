@@ -13,17 +13,14 @@ export const onRenderBody = (
   const preload = getFontFiles(allFonts)
   const fontNames = getFontNames(allFonts)
 
-  const hasPreconnect = Boolean(preconnect.length)
-  const hasPreload = Boolean(preload.length)
-
-  if (!preconnect || !preload || !hasPreconnect || !hasPreload) return
-
   const preloadConfig = getFontConfig(preconnect, preload)
 
-  if (enableListener) {
+  if (enableListener && Boolean(allFonts.length)) {
     const testFontConfig = getTestFonts(fontNames)
     setPostBodyComponents(testFontConfig)
   }
 
-  setHeadComponents(preloadConfig)
+  if(preloadConfig && Boolean(preloadConfig.length)) {
+    setHeadComponents(preloadConfig)
+  }
 }

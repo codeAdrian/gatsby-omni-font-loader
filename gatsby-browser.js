@@ -4,11 +4,13 @@ import { getFontFiles, getFontNames } from "./utils"
 
 export const wrapRootElement = (
   { element },
-  { custom = [], web = [], enableListener }
+  { custom = [], web = [], enableListener, interval, timeout }
 ) => {
   const allFonts = [...custom, ...web]
   const fontFiles = getFontFiles(allFonts)
   const fontNames = getFontNames(allFonts)
+
+  const listenerProps = { fontNames, interval, timeout }
 
   const hasFontFiles = Boolean(fontFiles.length)
   const hasFontNames = Boolean(fontNames.length)
@@ -16,7 +18,7 @@ export const wrapRootElement = (
   return (
     <>
       {hasFontNames && <AsyncFonts hrefs={fontFiles} />}
-      {enableListener && hasFontFiles && <FontListener fontNames={fontNames} />}
+      {enableListener && hasFontFiles && <FontListener {...listenerProps} />}
       {element}
     </>
   )

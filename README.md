@@ -6,7 +6,7 @@ Performant asynchronous font loading plugin for Gatsby.
 * Preloads the files & preconnects to the URL
 * Loads fonts asynchronously to avoid render blocking
 * Implemented with [fast loading snippets](https://csswizardry.com/2020/05/the-fastest-google-fonts/)
-* Loading status listener for avoiding FOUT & FOUC
+* Loading status listener for avoiding FOUT
 * Small size & minimal footprint
 
 ## Install
@@ -29,11 +29,17 @@ Add the following snippet to `gatsby-config.js` plugins array.
   /* Plugin options */
   options: {
 
-    /* Enable font loading listener to handle FOUC */
+    /* Enable font loading listener to handle FOUT */
     enableListener: true,
 
     /* Preconnect URL-s. This example is for Google Fonts */
     preconnect: ["https://fonts.gstatic.com"],
+
+    /* Font listener interval (in ms). Default is 300ms. Recommended: >=300ms */
+    interval: 300,
+
+    /* Font listener timeout value (in ms). Default is 30s (30000ms). Listener will no longer check for loaded fonts after timeout, fonts will still be loaded and displayed, but without handling FOUT. */
+    timeout: 30000,
 
     /* Self-hosted fonts config. Add font files and font CSS files to "static" folder */
     custom: [
@@ -57,9 +63,9 @@ Add the following snippet to `gatsby-config.js` plugins array.
 }
 ```
 
-## Handling FOUC with Font loading listener
+## Handling FOUT with Font loading listener
 
-When loading fonts asynchronously, Flash Of Unstyled Content (FOUC) might happen because fonts load few moments later after page is displayed to the user.
+When loading fonts asynchronously, Flash Of Unstyled Text (FOUT) might happen because fonts load few moments later after page is displayed to the user.
 
 To avoid this, we can use CSS to style the fallback font to closely match the font size, line height and letter spacing of the main font that is being loaded.
 
@@ -75,7 +81,7 @@ Here is the example of how `body` element will look like after all fonts are bei
 <body class="wf-lazy-monday--loaded wf-font-awesome-5-brands--loaded wf-font-awesome-5-free--loaded wf-staatliches--loaded wf-henny-penny--loaded">
 ```
 
-<img alt="FOUC example" src="https://res.cloudinary.com/dazdt97d3/image/upload/v1604140006/fouc.gif">
+<img alt="FOUT example" src="https://res.cloudinary.com/dazdt97d3/image/upload/v1604140006/fouc.gif">
 
 
 ## Issues and Contributions

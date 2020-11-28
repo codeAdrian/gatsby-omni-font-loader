@@ -1,6 +1,33 @@
-# Gatsby Omni Font Loader
+<div align="center">
+<img src="https://res.cloudinary.com/dazdt97d3/image/upload/c_scale,q_auto:best,w_200/v1606558223/omni-logo.jpg" alt="Omni font loader logo">
+<br/><br/>
+<h1>Gatsby Omni Font Loader</h1>
 
-Performant asynchronous font loading plugin for Gatsby.
+Performant asynchronous font loading & Flash Of Unstyled Text (FOUT) handling plugin for Gatsby.
+
+<br/>
+<img src="https://badgen.net/github/tag/codeAdrian/gatsby-omni-font-loader" />
+&nbsp;
+<img src="https://badgen.net/npm/dt/gatsby-omni-font-loader" />
+&nbsp;
+<img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
+<br/><br/>
+
+<img src="https://badgen.net/github/stars/codeAdrian/gatsby-omni-font-loader" />
+&nbsp;
+<img src="https://badgen.net/github/open-issues/codeAdrian/gatsby-omni-font-loader" />
+&nbsp;
+<img src="https://badgen.net/github/closed-issues/codeAdrian/gatsby-omni-font-loader" />
+&nbsp;
+<img src="https://badgen.net/github/last-commit/codeAdrian/gatsby-omni-font-loader/main" />
+&nbsp;
+<img src="https://badgen.net/github/license/codeAdrian/gatsby-omni-font-loader" />
+&nbsp;
+<img src="https://badgen.net/packagephobia/install/gatsby-omni-font-loader" />
+</div>
+<br/><br/>
+
+## Features
 
 * Supports web fonts & self-hosted fonts
 * Preloads the files & preconnects to the URL
@@ -63,6 +90,50 @@ Add the following snippet to `gatsby-config.js` plugins array.
 }
 ```
 
+## Options
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>enableListener</td>
+      <td>Enable font loading listener to handle Flash Of Unstyled Text. If enabled, CSS classes will be applied to HTML once each font has finished loading.</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td>preconnect</td>
+      <td>URLs used for preconnect meta. Base URL where <strong>font files</strong> are hosted.</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <td>interval</td>
+      <td>Font listener interval (in ms). Default is 300ms. Recommended: >=300ms. </td>
+      <td>300</td>
+    </tr>
+    <tr>
+      <td>timeout</td>
+      <td>Font listener timeout value (in ms). Default is 30s (30000ms). Listener will no longer check for loaded fonts after timeout, fonts will still be loaded and displayed, but without handling FOUT.</td>
+      <td>30000</td>
+    </tr>
+    <tr>
+      <td>web</td>
+      <td>Self-hosted fonts config. Add font files and font CSS files to "static" folder. Array of <code>{name: "Font name", file: "https://url-to-font-css.path"}</code> objects.</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <td>custom</td>
+      <td>Web fonts config. File link should point to font CSS file. Array of <code>{name: "Font name", file: "https://url-to-font-css.path"}</code> objects.</td>
+      <td>[]</td>
+    </tr>
+  <tbody>
+</table>
+
 ## Handling FOUT with Font loading listener
 
 When loading fonts asynchronously, Flash Of Unstyled Text (FOUT) might happen because fonts load few moments later after page is displayed to the user.
@@ -83,7 +154,6 @@ Here is the example of how `body` element will look like after all fonts are bei
 
 <img alt="FOUT example" src="https://res.cloudinary.com/dazdt97d3/image/upload/v1604140006/fouc.gif">
 
-
 ## Issues and Contributions
 
 Feel free to [report issues](https://github.com/codeAdrian/gatsby-omni-font-loader/issues) you find and feel free to contribute to the project by creating Pull Requests.
@@ -94,4 +164,4 @@ Contributions are welcome and appreciated!
 
 The project is created and maintained by [Adrian Bece](https://codeadrian.github.io/) with the generous help of community contributors. If you have used the plugin and would like to contribute, feel free to [Buy Me A Coffee](https://www.buymeacoffee.com/ubnZ8GgDJ).
 
-<a href="https://www.buymeacoffee.com/ubnZ8GgDJ" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-red.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
+<a href="https://www.buymeacoffee.com/ubnZ8GgDJ"><img src="https://img.buymeacoffee.com/button-api/?text=Support this project&emoji=&slug=ubnZ8GgDJ&button_colour=BD5FFF&font_colour=ffffff&font_family=Bree&outline_colour=000000&coffee_colour=FFDD00"></a>

@@ -122,12 +122,12 @@ Add the following snippet to `gatsby-config.js` plugins array.
       <td>30000</td>
     </tr>
     <tr>
-      <td>web</td>
+      <td>custom</td>
       <td>Self-hosted fonts config. Add font files and font CSS files to "static" folder. Array of <code>{name: "Font name", file: "https://url-to-font-css.path"}</code> objects.</td>
       <td>[]</td>
     </tr>
     <tr>
-      <td>custom</td>
+      <td>web</td>
       <td>Web fonts config. File link should point to font CSS file. Array of <code>{name: "Font name", file: "https://url-to-font-css.path"}</code> objects.</td>
       <td>[]</td>
     </tr>

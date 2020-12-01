@@ -160,6 +160,10 @@ Feel free to [report issues](https://github.com/codeAdrian/gatsby-omni-font-load
 
 Contributions are welcome and appreciated!
 
+## Thank you for the support
+
+[Roboto Studio](https://roboto.studio/) • [Your Name Here](https://www.buymeacoffee.com/ubnZ8GgDJ/e/11337)
+
 ## Support
 
 The project is created and maintained by [Adrian Bece](https://codeadrian.github.io/) with the generous help of community contributors. If you have used the plugin and would like to contribute, feel free to [Buy Me A Coffee](https://www.buymeacoffee.com/ubnZ8GgDJ).

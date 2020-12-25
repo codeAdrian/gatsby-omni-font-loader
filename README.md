@@ -38,11 +38,11 @@ Performant asynchronous font loading & Flash Of Unstyled Text (FOUT) handling pl
 
 ## Install
 
-`npm install --save-dev gatsby-omni-font-loader`
+`npm install --save-dev gatsby-omni-font-loader react-helmet`
 
 or
 
-`yarn add --dev gatsby-omni-font-loader`
+`yarn add --dev gatsby-omni-font-loader react-helmet`
 
 ## Configuration
 

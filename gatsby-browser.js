@@ -1,11 +1,23 @@
 import React from "react"
 import { AsyncFonts, FontListener } from "./components"
+import { INTERVAL_DEFAULT, MODE_DEFAULT, TIMEOUT_DEFAULT } from "./consts"
 import { getFontFiles, getFontNames } from "./utils"
 
 export const wrapRootElement = (
   { element },
-  { custom = [], web = [], enableListener, interval, timeout }
+  {
+    custom = [],
+    web = [],
+    enableListener,
+    interval = INTERVAL_DEFAULT,
+    timeout = TIMEOUT_DEFAULT,
+    mode = MODE_DEFAULT,
+  }
 ) => {
+  if (mode !== "async") {
+    return element
+  }
+
   const allFonts = [...custom, ...web]
   const fontFiles = getFontFiles(allFonts)
   const fontNames = getFontNames(allFonts)

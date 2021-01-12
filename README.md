@@ -98,21 +98,21 @@ Add the following snippet to `gatsby-config.js` plugins array.
   <tr>
   </tr>
       <td>mode</td>
-      <td>Can be set to `"async"` (default) or `"render-blocking"`. In `async` mode, fonts are loaded in optimal way, but FOUT is visible. In `render-blocking` mode FOUT will happen in rare cases, but the font files will become render-blocking.</td>
+      <td>Can be set to <code>"async"</code> (default) or <code>"render-blocking"</code>. In <code>async</code> mode, fonts are loaded in optimal way, but FOUT is visible. In <code>render-blocking</code> mode FOUT will happen in rare cases, but the font files will become render-blocking.</td>
       <td>async</td>
     <tr>
       <td>enableListener</td>
-      <td>Works in `async` mode. Enable font loading listener to handle Flash Of Unstyled Text. If enabled, CSS classes will be applied to HTML once each font has finished loading.</td>
+      <td>Works in <code>async</code> mode. Enable font loading listener to handle Flash Of Unstyled Text. If enabled, CSS classes will be applied to HTML once each font has finished loading.</td>
       <td>false</td>
     </tr>
     <tr>
       <td>interval</td>
-      <td>Works if `enableListener` is `true`. Font listener interval (in ms). Default is 300ms. Recommended: >=300ms. </td>
+      <td>Works if <code>enableListener</code> is <code>true</code>. Font listener interval (in ms). Default is 300ms. Recommended: >=300ms. </td>
       <td>300</td>
     </tr>
     <tr>
       <td>timeout</td>
-      <td>Works if `enableListener` is `true`. Font listener timeout value (in ms). Default is 30s (30000ms). Listener will no longer check for loaded fonts after timeout, fonts will still be loaded and displayed, but without handling FOUT.</td>
+      <td>Works if <code>enableListener</code> is <code>true</code>. Font listener timeout value (in ms). Default is 30s (30000ms). Listener will no longer check for loaded fonts after timeout, fonts will still be loaded and displayed, but without handling FOUT.</td>
       <td>30000</td>
     </tr>
     <tr>

@@ -2,28 +2,19 @@
 <img src="https://res.cloudinary.com/dazdt97d3/image/upload/c_scale,q_auto:best,w_200/v1606558223/omni-logo.jpg" alt="Omni font loader logo">
 <br/><br/>
 <h1>Gatsby Omni Font Loader</h1>
+</div>
 
-Performant asynchronous font loading & Flash Of Unstyled Text (FOUT) handling plugin for Gatsby.
+* Simple way to add webfonts or custom fonts to Gatsby project
+* Performant asynchronous font loading can be enabled
+* Font loading listener can be enabled
+* Flash Of Unstyled Text (FOUT) handling support
 
+<div align="center">
 <br/>
-<img src="https://badgen.net/github/tag/codeAdrian/gatsby-omni-font-loader" />
-&nbsp;
-<img src="https://badgen.net/npm/dt/gatsby-omni-font-loader" />
-&nbsp;
-<img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
+<img src="https://badgen.net/github/tag/codeAdrian/gatsby-omni-font-loader" /> <img src="https://badgen.net/npm/dt/gatsby-omni-font-loader" /> <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
 <br/><br/>
 
-<img src="https://badgen.net/github/stars/codeAdrian/gatsby-omni-font-loader" />
-&nbsp;
-<img src="https://badgen.net/github/open-issues/codeAdrian/gatsby-omni-font-loader" />
-&nbsp;
-<img src="https://badgen.net/github/closed-issues/codeAdrian/gatsby-omni-font-loader" />
-&nbsp;
-<img src="https://badgen.net/github/last-commit/codeAdrian/gatsby-omni-font-loader/main" />
-&nbsp;
-<img src="https://badgen.net/github/license/codeAdrian/gatsby-omni-font-loader" />
-&nbsp;
-<img src="https://badgen.net/packagephobia/install/gatsby-omni-font-loader" />
+<img src="https://badgen.net/github/stars/codeAdrian/gatsby-omni-font-loader" /> <img src="https://badgen.net/github/open-issues/codeAdrian/gatsby-omni-font-loader" /> <img src="https://badgen.net/github/closed-issues/codeAdrian/gatsby-omni-font-loader" /> <img src="https://badgen.net/github/last-commit/codeAdrian/gatsby-omni-font-loader/main" /> <img src="https://badgen.net/github/license/codeAdrian/gatsby-omni-font-loader" /> <img src="https://badgen.net/packagephobia/install/gatsby-omni-font-loader" />
 </div>
 <br/><br/>
 
@@ -55,6 +46,9 @@ Add the following snippet to `gatsby-config.js` plugins array.
 
   /* Plugin options */
   options: {
+
+    /* Font loading mode */
+    mode: "async",
 
     /* Enable font loading listener to handle FOUT */
     enableListener: true,
@@ -101,24 +95,24 @@ Add the following snippet to `gatsby-config.js` plugins array.
     </tr>
   </thead>
   <tbody>
+  <tr>
+  </tr>
+      <td>mode</td>
+      <td>Can be set to `"async"` (default) or `"render-blocking"`. In `async` mode, fonts are loaded in optimal way, but FOUT is visible. In `render-blocking` mode FOUT will happen in rare cases, but the font files will become render-blocking.</td>
+      <td>async</td>
     <tr>
       <td>enableListener</td>
-      <td>Enable font loading listener to handle Flash Of Unstyled Text. If enabled, CSS classes will be applied to HTML once each font has finished loading.</td>
+      <td>Works in `async` mode. Enable font loading listener to handle Flash Of Unstyled Text. If enabled, CSS classes will be applied to HTML once each font has finished loading.</td>
       <td>false</td>
     </tr>
     <tr>
-      <td>preconnect</td>
-      <td>URLs used for preconnect meta. Base URL where <strong>font files</strong> are hosted.</td>
-      <td>[]</td>
-    </tr>
-    <tr>
       <td>interval</td>
-      <td>Font listener interval (in ms). Default is 300ms. Recommended: >=300ms. </td>
+      <td>Works if `enableListener` is `true`. Font listener interval (in ms). Default is 300ms. Recommended: >=300ms. </td>
       <td>300</td>
     </tr>
     <tr>
       <td>timeout</td>
-      <td>Font listener timeout value (in ms). Default is 30s (30000ms). Listener will no longer check for loaded fonts after timeout, fonts will still be loaded and displayed, but without handling FOUT.</td>
+      <td>Works if `enableListener` is `true`. Font listener timeout value (in ms). Default is 30s (30000ms). Listener will no longer check for loaded fonts after timeout, fonts will still be loaded and displayed, but without handling FOUT.</td>
       <td>30000</td>
     </tr>
     <tr>
@@ -131,8 +125,35 @@ Add the following snippet to `gatsby-config.js` plugins array.
       <td>Web fonts config. File link should point to font CSS file. Array of <code>{name: "Font name", file: "https://url-to-font-css.path"}</code> objects.</td>
       <td>[]</td>
     </tr>
+    <tr>
+      <td>preconnect</td>
+      <td>URLs used for preconnect meta. Base URL where <strong>font files</strong> are hosted.</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <td>preload</td>
+      <td>Additional URLs used for preload meta. Preload for URLs provided under `file` attribute of `custom` and `web` fonts are automatically generated.</td>
+      <td>[]</td>
+    </tr>
   <tbody>
 </table>
+
+## Async mode vs Render-blocking mode
+### Async mode
+Load font stylesheets and files in low-priority mode. If you want to add fonts in a performant way, handle FOUT on your own and make sure that the page render times are low, you should use `async` mode.
+
+__Pros:__ Performance, content is displayed before font files are downloaded and parsed
+<br/>
+__Cons:__ FOUT needs to be handled
+
+### Render-blocking mode
+Load font stylesheets and files in high-priority mode. If you want to use this plugin as a simple way to add fonts to your project as you would do in any other project, without any performance optimizations and FOUT handling, you should use `render-blocking` mode.
+
+__Pros:__ Simple markup, FOUT won't occur in most cases
+<br/>
+__Cons:__ Font stylesheets and font files can delay first content paint time
+
+
 
 ## Handling FOUT with Font loading listener
 

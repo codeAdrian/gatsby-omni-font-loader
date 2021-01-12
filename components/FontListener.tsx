@@ -6,14 +6,14 @@ declare var document: { fonts: any }
 
 interface Props {
   fontNames: string[]
-  interval?: number
-  timeout?: number
+  interval: number
+  timeout: number
 }
 
 export const FontListener: React.FC<Props> = ({
   fontNames,
-  interval = 300,
-  timeout = 30000,
+  interval,
+  timeout,
 }) => {
   const [hasLoaded, setHasLoaded] = useState<Boolean>(false)
   const [loadedFonts, setLoadedFonts] = useState<string[]>([])

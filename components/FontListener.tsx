@@ -25,8 +25,8 @@ export const FontListener: React.FC<Props> = ({
     [loadedFonts, fontNames]
   )
 
-  const loadedClassname = useMemo(getLoadedFontClassNames, [loadedFonts])
-
+  const loadedAttrName = useMemo(getLoadedFontAttrNames, [loadedFonts])
+  
   const apiAvailable = "fonts" in document
 
   useEffect(() => {
@@ -46,18 +46,17 @@ export const FontListener: React.FC<Props> = ({
       clearInterval(intervalId)
     }
   }, [hasLoaded, intervalId])
-
+  
   return (
     <Helmet>
-      <body className={loadedClassname} />
+      <html {...loadedAttrName} />
     </Helmet>
   )
 
-  function getLoadedFontClassNames() {
+  function getLoadedFontAttrNames() {
     return Boolean(loadedFonts.length)
       ? loadedFonts
-          .map(fontName => `wf-${kebabCase(fontName)}--loaded`)
-          .join(" ")
+          .reduce((acc, fontName) => ({ ...acc, ...({[`wf-${kebabCase(fontName)}`]: "loaded"}) }), {})
       : ""
   }
 

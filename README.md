@@ -56,12 +56,6 @@ Add the following snippet to `gatsby-config.js` plugins array.
     /* Preconnect URL-s. This example is for Google Fonts */
     preconnect: ["https://fonts.gstatic.com"],
 
-    /* Font listener interval (in ms). Default is 300ms. Recommended: >=300ms */
-    interval: 300,
-
-    /* Font listener timeout value (in ms). Default is 30s (30000ms). Listener will no longer check for loaded fonts after timeout, fonts will still be loaded and displayed, but without handling FOUT. */
-    timeout: 30000,
-
     /* Self-hosted fonts config. Add font files and font CSS files to "static" folder */
     custom: [
       {
@@ -96,10 +90,15 @@ Add the following snippet to `gatsby-config.js` plugins array.
   </thead>
   <tbody>
   <tr>
-  </tr>
       <td>mode</td>
-      <td>Can be set to <code>"async"</code> (default) or <code>"render-blocking"</code>. In <code>async</code> mode, fonts are loaded in optimal way, but FOUT is visible. In <code>render-blocking</code> mode FOUT will happen in rare cases, but the font files will become render-blocking.</td>
+      <td>Can be set to <code>async</code> (default) or <code>render-blocking</code>. In <code>async</code> mode, fonts are loaded in optimal way, but FOUT is visible. In <code>render-blocking</code> mode FOUT will happen in rare cases, but the font files will become render-blocking.</td>
       <td>async</td>
+  </tr>
+    <tr>
+      <td>scope</td>
+      <td>Can be set to <code>body</code> (default) or <code>html</code>. Sets the target element for HTML classnames to be applied to.</td>
+      <td>body</td>
+  </tr>
     <tr>
       <td>enableListener</td>
       <td>Works in <code>async</code> mode. Enable font loading listener to handle Flash Of Unstyled Text. If enabled, CSS classes will be applied to HTML once each font has finished loading.</td>
@@ -117,23 +116,23 @@ Add the following snippet to `gatsby-config.js` plugins array.
     </tr>
     <tr>
       <td>custom</td>
-      <td>Self-hosted fonts config. Add font files and font CSS files to "static" folder. Array of <code>{name: "Font name", file: "https://url-to-font-css.path"}</code> objects.</td>
-      <td>[]</td>
+      <td>Self-hosted fonts config. Add font files and font CSS files to <code>static</code> folder. Array of <code>{name: "Font name", file: "https://url-to-font-css.path"}</code> objects.</td>
+      <td><code>[]</code></td>
     </tr>
     <tr>
       <td>web</td>
       <td>Web fonts config. File link should point to font CSS file. Array of <code>{name: "Font name", file: "https://url-to-font-css.path"}</code> objects.</td>
-      <td>[]</td>
+      <td><code>[]</code></td>
     </tr>
     <tr>
       <td>preconnect</td>
       <td>URLs used for preconnect meta. Base URL where <strong>font files</strong> are hosted.</td>
-      <td>[]</td>
+      <td><code>[]</code></td>
     </tr>
     <tr>
       <td>preload</td>
-      <td>Additional URLs used for preload meta. Preload for URLs provided under `file` attribute of `custom` and `web` fonts are automatically generated.</td>
-      <td>[]</td>
+      <td>Additional URLs used for preload meta. Preload for URLs provided under <code>file</code> attribute of <code>custom</code> and <code>web</code> fonts are automatically generated.</td>
+      <td><code>[]</code></td>
     </tr>
   <tbody>
 </table>
@@ -181,7 +180,15 @@ Feel free to [report issues](https://github.com/codeAdrian/gatsby-omni-font-load
 
 Contributions are welcome and appreciated!
 
-## Thank you for the support
+## Code contributors
+
+Thank you for your contribution!
+
+[Henrik](https://github.com/henrikdahl) • [Lennart](https://github.com/LekoArts) • [Francis Champagne](https://github.com/fcisio)
+
+## Sponsors
+
+Thank you for your support!
 
 [Roboto Studio](https://roboto.studio/) • [Your Name Here](https://www.buymeacoffee.com/ubnZ8GgDJ/e/11337)
 

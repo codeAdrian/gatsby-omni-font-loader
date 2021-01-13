@@ -8,12 +8,14 @@ interface Props {
   fontNames: string[]
   interval: number
   timeout: number
+  scope: string
 }
 
 export const FontListener: React.FC<Props> = ({
   fontNames,
   interval,
   timeout,
+  scope,
 }) => {
   const [hasLoaded, setHasLoaded] = useState<Boolean>(false)
   const [loadedFonts, setLoadedFonts] = useState<string[]>([])
@@ -25,7 +27,9 @@ export const FontListener: React.FC<Props> = ({
     [loadedFonts, fontNames]
   )
 
-  const loadedAttrName = useMemo(getLoadedFontAttrNames, [loadedFonts])
+  const classnameScope = useMemo(() => scope, [])
+  const loadedClassname = useMemo(getLoadedFontClassNames, [loadedFonts])
+  const targetElement = classnameScope === "html" ? "documentElement" : "body"
   
   const apiAvailable = "fonts" in document
 
@@ -46,17 +50,18 @@ export const FontListener: React.FC<Props> = ({
       clearInterval(intervalId)
     }
   }, [hasLoaded, intervalId])
-  
-  return (
-    <Helmet>
-      <html {...loadedAttrName} />
-    </Helmet>
-  )
 
-  function getLoadedFontAttrNames() {
+  useEffect(() => {
+    document[targetElement].className += " " + loadedClassname
+  }, [loadedClassname])
+  
+  return null
+
+  function getLoadedFontClassNames() {
     return Boolean(loadedFonts.length)
       ? loadedFonts
-          .reduce((acc, fontName) => ({ ...acc, ...({[`wf-${kebabCase(fontName)}`]: "loaded"}) }), {})
+          .map(fontName => `wf-${kebabCase(fontName)}--loaded`)
+          .join(" ")
       : ""
   }
 

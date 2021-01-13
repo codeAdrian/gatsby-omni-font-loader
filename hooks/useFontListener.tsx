@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { kebabCase } from "../utils"
 
 declare var document: { fonts: any }
@@ -33,6 +33,7 @@ export const useFontListener: fontListenerHook = ({
     () => (scope === "html" ? "documentElement" : "body"),
     [scope]
   )
+  const targetElementClassList = document[targetElement].classList
 
   const apiAvailable = "fonts" in document
 
@@ -67,7 +68,7 @@ export const useFontListener: fontListenerHook = ({
   }
 
   function addClassName(fontName) {
-    document[targetElement].classList.add(`wf-${kebabCase(fontName)}--loaded`)
+    targetElementClassList.add(`wf-${kebabCase(fontName)}--loaded`)
   }
 
   function isFontLoaded() {
@@ -103,6 +104,7 @@ export const useFontListener: fontListenerHook = ({
 
     if (allFontsLoaded) {
       setHasLoaded(true)
+      targetElementClassList.add(`wf-all--loaded`)
     }
   }
 }

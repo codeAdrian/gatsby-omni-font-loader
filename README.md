@@ -29,15 +29,15 @@
 
 ## Install
 
-`npm install gatsby-omni-font-loader react-helmet`
+`npm install gatsby-omni-font-loader react-helmet-async`
 
 or
 
-`yarn add gatsby-omni-font-loader react-helmet`
+`yarn add gatsby-omni-font-loader react-helmet-async`
 
 ## Configuration
 
-Add the following snippet to `gatsby-config.js` plugins array.
+Add the following snippet to the `gatsby-config.js` plugins array.
 
 ```js
 {

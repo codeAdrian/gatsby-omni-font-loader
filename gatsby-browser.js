@@ -1,6 +1,11 @@
 import React from "react"
 import { AsyncFonts, FontListener } from "./components"
-import { INTERVAL_DEFAULT, MODE_DEFAULT, TIMEOUT_DEFAULT } from "./consts"
+import {
+  INTERVAL_DEFAULT,
+  MODE_DEFAULT,
+  TIMEOUT_DEFAULT,
+  SCOPE_DEFAULT,
+} from "./consts"
 import { getFontFiles, getFontNames } from "./utils"
 
 export const wrapRootElement = (
@@ -11,6 +16,7 @@ export const wrapRootElement = (
     enableListener,
     interval = INTERVAL_DEFAULT,
     timeout = TIMEOUT_DEFAULT,
+    scope = SCOPE_DEFAULT,
     mode = MODE_DEFAULT,
   }
 ) => {
@@ -22,16 +28,21 @@ export const wrapRootElement = (
   const fontFiles = getFontFiles(allFonts)
   const fontNames = getFontNames(allFonts)
 
-  const listenerProps = { fontNames, interval, timeout }
+  const listenerProps = { fontNames, interval, timeout, scope }
 
   const hasFontFiles = Boolean(fontFiles.length)
   const hasFontNames = Boolean(fontNames.length)
 
-  return (
+  const children = (
     <>
       {hasFontNames && <AsyncFonts hrefs={fontFiles} />}
-      {enableListener && hasFontFiles && <FontListener {...listenerProps} />}
       {element}
     </>
   )
+
+  if (!hasFontFiles || !enableListener) {
+    return children
+  }
+
+  return <FontListener options={listenerProps}>{children}</FontListener>
 }

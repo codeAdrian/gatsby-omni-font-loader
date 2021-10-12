@@ -4,10 +4,10 @@
 <h1>Gatsby Omni Font Loader</h1>
 </div>
 
-* Simple way to add webfonts or custom fonts to Gatsby project
-* Performant asynchronous font loading can be enabled
-* Font loading listener can be enabled
-* Flash Of Unstyled Text (FOUT) handling support
+- Simple way to add webfonts or custom fonts to Gatsby project
+- Performant asynchronous font loading can be enabled
+- Font loading listener can be enabled
+- Flash Of Unstyled Text (FOUT) handling support
 
 <div align="center">
 <br/>
@@ -15,17 +15,18 @@
 <br/><br/>
 
 <img src="https://badgen.net/github/stars/codeAdrian/gatsby-omni-font-loader" /> <img src="https://badgen.net/github/open-issues/codeAdrian/gatsby-omni-font-loader" /> <img src="https://badgen.net/github/closed-issues/codeAdrian/gatsby-omni-font-loader" /> <img src="https://badgen.net/github/last-commit/codeAdrian/gatsby-omni-font-loader/main" /> <img src="https://badgen.net/github/license/codeAdrian/gatsby-omni-font-loader" /> <img src="https://badgen.net/packagephobia/install/gatsby-omni-font-loader" />
+
 </div>
 <br/><br/>
 
 ## Features
 
-* Supports web fonts & self-hosted fonts
-* Preloads the files & preconnects to the URL
-* Loads fonts asynchronously to avoid render blocking
-* Implemented with [fast loading snippets](https://csswizardry.com/2020/05/the-fastest-google-fonts/)
-* Loading status listener for avoiding FOUT
-* Small size & minimal footprint
+- Supports web fonts & self-hosted fonts
+- Preloads the files & preconnects to the URL
+- Loads fonts asynchronously to avoid render blocking
+- Implemented with [fast loading snippets](https://csswizardry.com/2020/05/the-fastest-google-fonts/)
+- Loading status listener for avoiding FOUT
+- Small size & minimal footprint
 
 ## Install
 
@@ -138,21 +139,22 @@ Add the following snippet to `gatsby-config.js` plugins array.
 </table>
 
 ## Async mode vs Render-blocking mode
+
 ### Async mode
+
 Load font stylesheets and files in low-priority mode. If you want to add fonts in a performant way, handle FOUT on your own and make sure that the page render times are low, you should use `async` mode.
 
-__Pros:__ Performance, content is displayed before font files are downloaded and parsed
+**Pros:** Performance, content is displayed before font files are downloaded and parsed
 <br/>
-__Cons:__ FOUT needs to be handled
+**Cons:** FOUT needs to be handled
 
 ### Render-blocking mode
+
 Load font stylesheets and files in high-priority mode. If you want to use this plugin as a simple way to add fonts to your project as you would do in any other project, without any performance optimizations and FOUT handling, you should use `render-blocking` mode.
 
-__Pros:__ Simple markup, FOUT won't occur in most cases
+**Pros:** Simple markup, FOUT won't occur in most cases
 <br/>
-__Cons:__ Font stylesheets and font files can delay first content paint time
-
-
+**Cons:** Font stylesheets and font files can delay first content paint time
 
 ## Handling FOUT with Font loading listener
 
@@ -169,7 +171,9 @@ You can use the [Font Style Matcher](https://meowni.ca/font-style-matcher/) to a
 Here is the example of how `body` element will look like after all fonts are being loaded (depending on the config).
 
 ```html
-<body class="wf-lazy-monday--loaded wf-font-awesome-5-brands--loaded wf-font-awesome-5-free--loaded wf-staatliches--loaded wf-henny-penny--loaded">
+<body
+  class="wf-lazy-monday--loaded wf-font-awesome-5-brands--loaded wf-font-awesome-5-free--loaded wf-staatliches--loaded wf-henny-penny--loaded"
+></body>
 ```
 
 <img alt="FOUT example" src="https://res.cloudinary.com/dazdt97d3/image/upload/v1604140006/fouc.gif">
@@ -184,7 +188,7 @@ Contributions are welcome and appreciated!
 
 Thank you for your contribution!
 
-[Henrik](https://github.com/henrikdahl) • [Lennart](https://github.com/LekoArts) • [Francis Champagne](https://github.com/fcisio)
+[Henrik](https://github.com/henrikdahl) • [Lennart](https://github.com/LekoArts) • [Francis Champagne](https://github.com/fcisio) • [Hugo](https://github.com/hugofabricio)
 
 ## Sponsors
 

@@ -27,7 +27,7 @@
     "url": "https://github.com/codeAdrian/gatsby-omni-font-loader"
   },
   "peerDependencies": {
-    "gatsby": "^2.0.0 || ^3.0.0",
+    "gatsby": "^2.0.0 || ^3.0.0 || ^4.0.0-next",
     "react-helmet": ">=6.0.0"
   }
 }

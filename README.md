@@ -60,7 +60,7 @@ Add the following snippet to `gatsby-config.js` plugins array.
     /* Self-hosted fonts config. Add font files and font CSS files to "static" folder */
     custom: [
       {
-        /* Exact name of the font as defied in @font-face CSS rule */
+        /* Exact name of the font as defined in @font-face CSS rule */
         name: ["Font Awesome 5 Brands", "Font Awesome 5 Free"],
         /* Path to the font CSS file inside the "static" folder with @font-face definition */
         file: "/fonts/fontAwesome/css/all.min.css",
@@ -69,7 +69,7 @@ Add the following snippet to `gatsby-config.js` plugins array.
 
     /* Web fonts. File link should point to font CSS file. */
     web: [{
-        /* Exact name of the font as defied in @font-face CSS rule */
+        /* Exact name of the font as defined in @font-face CSS rule */
         name: "Staatliches",
         /* URL to the font CSS file with @font-face definition */
         file: "https://fonts.googleapis.com/css2?family=Staatliches",

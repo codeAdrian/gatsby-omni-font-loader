@@ -1,48 +1,39 @@
-import React from "react"
-import { AsyncFonts, FontListener } from "./components"
-import {
-  INTERVAL_DEFAULT,
-  MODE_DEFAULT,
-  TIMEOUT_DEFAULT,
-  SCOPE_DEFAULT,
-} from "./consts"
-import { getFontFiles, getFontNames } from "./utils"
+import React from "react";
+import { AsyncFonts } from "./components";
+import { MODE_DEFAULT, SCOPE_DEFAULT } from "./consts";
+import { getFontFiles, getFontNames } from "./utils";
+import { fontListener } from "./utils/fontListener";
+
+export const onClientEntry = (
+  _,
+  { custom = [], web = [], enableListener, scope = SCOPE_DEFAULT }
+) => {
+  if (enableListener) {
+    const listenerProps = { fontNames, scope };
+    const allFonts = [...custom, ...web];
+    const fontNames = getFontNames(allFonts);
+
+    fontListener(listenerProps);
+  }
+};
 
 export const wrapRootElement = (
   { element },
-  {
-    custom = [],
-    web = [],
-    enableListener,
-    interval = INTERVAL_DEFAULT,
-    timeout = TIMEOUT_DEFAULT,
-    scope = SCOPE_DEFAULT,
-    mode = MODE_DEFAULT,
-  }
+  { custom = [], web = [], mode = MODE_DEFAULT }
 ) => {
   if (mode !== "async") {
-    return element
+    return element;
   }
 
-  const allFonts = [...custom, ...web]
-  const fontFiles = getFontFiles(allFonts)
-  const fontNames = getFontNames(allFonts)
+  const allFonts = [...custom, ...web];
+  const fontFiles = getFontFiles(allFonts);
+  const fontNames = getFontNames(allFonts);
+  const hasFontNames = Boolean(fontNames.length);
 
-  const listenerProps = { fontNames, interval, timeout, scope }
-
-  const hasFontFiles = Boolean(fontFiles.length)
-  const hasFontNames = Boolean(fontNames.length)
-
-  const children = (
+  return (
     <>
       {hasFontNames && <AsyncFonts hrefs={fontFiles} />}
       {element}
     </>
-  )
-
-  if (!hasFontFiles || !enableListener) {
-    return children
-  }
-
-  return <FontListener options={listenerProps}>{children}</FontListener>
-}
+  );
+};

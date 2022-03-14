@@ -1,2 +1,1 @@
-export * from "./AsyncFonts"
-export * from "./FontListener"
+export * from "./AsyncFonts";

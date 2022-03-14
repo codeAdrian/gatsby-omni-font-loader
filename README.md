@@ -1,7 +1,7 @@
 <div align="center">
 <img src="https://res.cloudinary.com/dazdt97d3/image/upload/c_scale,q_auto:best,w_200/v1606558223/omni-logo.jpg" alt="Omni font loader logo">
 <br/><br/>
-<h1>Gatsby Omni Font Loader</h1>
+<h1>Gatsby Omni Font Loader v2</h1>
 </div>
 
 - Simple way to add webfonts or custom fonts to Gatsby project
@@ -106,12 +106,12 @@ Add the following snippet to `gatsby-config.js` plugins array.
       <td>false</td>
     </tr>
     <tr>
-      <td>interval</td>
+      <td>interval <strong>(V1 ONLY)</strong></td>
       <td>Works if <code>enableListener</code> is <code>true</code>. Font listener interval (in ms). Default is 300ms. Recommended: >=300ms. </td>
       <td>300</td>
     </tr>
     <tr>
-      <td>timeout</td>
+      <td>timeout <strong>(V1 ONLY)</strong></td>
       <td>Works if <code>enableListener</code> is <code>true</code>. Font listener timeout value (in ms). Default is 30s (30000ms). Listener will no longer check for loaded fonts after timeout, fonts will still be loaded and displayed, but without handling FOUT.</td>
       <td>30000</td>
     </tr>
@@ -164,7 +164,7 @@ To avoid this, we can use CSS to style the fallback font to closely match the fo
 
 When `enableListener: true` is set in plugin config in `gatsby-config.js`, HTML classes are being added to `<body>` element as the fonts are being loaded.
 
-HTML class name format will be in the following format `wf-[font-family-name]--loaded`.
+HTML class name format will be in the following format `wf-[font-family-name]`. When all fonts are loaded `wf-all` is applied.
 
 You can use the [Font Style Matcher](https://meowni.ca/font-style-matcher/) to adjust the perfect fallback font and fallback CSS config.
 
@@ -172,11 +172,15 @@ Here is the example of how `body` element will look like after all fonts are bei
 
 ```html
 <body
-  class="wf-lazy-monday--loaded wf-font-awesome-5-brands--loaded wf-font-awesome-5-free--loaded wf-staatliches--loaded wf-henny-penny--loaded"
+  class="wf-lazy-monday wf-font-awesome-5-brands wf-font-awesome-5-free wf-staatliches wf-all"
 ></body>
 ```
 
 <img alt="FOUT example" src="https://res.cloudinary.com/dazdt97d3/image/upload/v1604140006/fouc.gif">
+
+## V2 breaking changes
+* Removed `interval` and `timeout` options
+* Changed class name format to a more generic `wf-[font-family-name]` to avoid mixing naming conventions
 
 ## Issues and Contributions
 

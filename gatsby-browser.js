@@ -6,15 +6,17 @@ import { fontListener } from "./utils/fontListener";
 
 export const onClientEntry = (
   _,
-  { custom = [], web = [], enableListener, scope = SCOPE_DEFAULT }
+  { custom = [], web = [], enableListener = false, scope = SCOPE_DEFAULT }
 ) => {
-  if (enableListener) {
-    const listenerProps = { fontNames, scope };
-    const allFonts = [...custom, ...web];
-    const fontNames = getFontNames(allFonts);
-
-    fontListener(listenerProps);
+  if (!enableListener) {
+    return;
   }
+
+  const allFonts = [...custom, ...web];
+  const fontNames = getFontNames(allFonts);
+  const listenerProps = { fontNames, scope };
+
+  fontListener(listenerProps);
 };
 
 export const wrapRootElement = (

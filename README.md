@@ -194,14 +194,8 @@ Thank you for your contribution!
 
 [Henrik](https://github.com/henrikdahl) • [Lennart](https://github.com/LekoArts) • [Francis Champagne](https://github.com/fcisio) • [Hugo](https://github.com/hugofabricio)
 
-## Sponsors
+## Supported by
 
 Thank you for your support!
 
-[Roboto Studio](https://roboto.studio/) • [Your Name Here](https://www.buymeacoffee.com/ubnZ8GgDJ/e/11337)
-
-## Support
-
-The project is created and maintained by [Adrian Bece](https://codeadrian.github.io/) with the generous help of community contributors. If you have used the plugin and would like to contribute, feel free to [Buy Me A Coffee](https://www.buymeacoffee.com/ubnZ8GgDJ).
-
-<a href="https://www.buymeacoffee.com/ubnZ8GgDJ"><img src="https://img.buymeacoffee.com/button-api/?text=Support this project&emoji=&slug=ubnZ8GgDJ&button_colour=BD5FFF&font_colour=ffffff&font_family=Bree&outline_colour=000000&coffee_colour=FFDD00"></a>
+[Roboto Studio](https://roboto.studio/)

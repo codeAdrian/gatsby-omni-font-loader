@@ -11,8 +11,10 @@ export const fontListener = ({ fontNames, scope }) => {
     addClassName("all");
   }
 
-  function handleFontLoad(fontName: string) {
-    addClassName(fontName);
+  function handleFontLoad(fontFaces: FontFace[]) {
+    fontFaces.forEach((fontFace) => {
+      addClassName(fontFace.family);
+    })
   }
 
   function fontMapper(fontName) {
@@ -37,7 +39,7 @@ export const fontListener = ({ fontNames, scope }) => {
     errorFallback();
   }
 
-  function addClassName(fontName) {
+  function addClassName(fontName: string) {
     document[targetElement].classList.add(`wf-${kebabCase(fontName)}`);
   }
 

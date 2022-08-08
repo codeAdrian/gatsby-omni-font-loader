@@ -1,42 +1,6 @@
 import { kebabCase } from "../utils";
 import { FontInfo } from './fontListener';
-
-
-const weights = {
-    1: "100",
-    2: "200",
-    3: "300",
-    4: "400",
-    5: "500",
-    6: "600",
-    7: "700",
-    8: "800",
-    9: "900",
-    100: "1",
-    200: "2",
-    300: "3",
-    400: "4",
-    500: "5",
-    600: "6",
-    700: "7",
-    800: "8",
-    900: "9",
-    normal: "4",
-    bold: "7",
-}
-
-
-const styles = {
-    n: "normal",
-    i: "italic",
-    o: "oblique",
-    normal: "n",
-    italic: "i",
-    oblique: "o",
-}
-
-const VARIATION_MATCH = new RegExp("^(n|i)([1-9])$")
-
+import { VARIATION_MATCH, WEIGHTS, STYLES } from '../consts';
 
 export const parseFontInfo = (fontFamilies: string[]) => {
     const length = fontFamilies.length
@@ -82,14 +46,14 @@ export const normalizeStyle = (parsedStyle: string): string => {
     if (!parsedStyle) {
         return ""
     }
-    return styles[parsedStyle]
+    return STYLES[parsedStyle]
 }
 
 export const normalizeWeight = (parsedWeight: string | number): string => {
     if (!parsedWeight) {
         return ""
     }
-    return weights[parsedWeight]
+    return WEIGHTS[parsedWeight]
 
 }
 
@@ -114,11 +78,10 @@ const parseVariations = (variations: string) => {
 }
 
  
-export const convertToFVD = (fontInfo: FontInfo) => {
-    const weightVal = normalizeWeight(fontInfo.fontWeight)
-    const styleVal = normalizeStyle(fontInfo.fontStyle)
+export const convertToFVD = ({fontName, fontStyle, fontWeight}: FontInfo) => {
+    const weightVal = normalizeWeight(fontWeight)
+    const styleVal = normalizeStyle(fontStyle)
     const styleWeight = styleVal + weightVal
-    const fontNameVal = kebabCase(fontInfo.fontName)
+    const fontNameVal = kebabCase(fontName)
     return styleWeight ? [fontNameVal, styleWeight].join('-') : fontNameVal
-
 }

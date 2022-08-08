@@ -1,11 +1,9 @@
+import { info, warn } from './logger';
 import { convertToFVD, parseFontInfo } from './parseFontInfo';
 
 export type FontInfo = { fontName: string; fontStyle: string; fontWeight: string }
-const fontLoadConst = {
-  interval: 10,
-  timeout: 5000,
-}
-export const fontListener = ({ fontNames, scope }) => {
+
+export const fontListener = ({ fontNames, scope, timeout, interval }) => {
 
   const hasFonts = fontNames && Boolean(fontNames.length);
   const targetElement = scope === "html" ? "documentElement" : "body";
@@ -24,26 +22,31 @@ export const fontListener = ({ fontNames, scope }) => {
 
   function fontMapper(fontDetail: FontInfo) {
     const fontFace = [fontDetail.fontStyle, fontDetail.fontWeight, '1rem', fontDetail.fontName].join(' ')
-    // refer https://stackoverflow.com/a/64192936/9740955
+    const startTime = Date.now();
+
     return new Promise((resolve, reject) => {
-       const poller = setInterval(async () => {
-        try {
-          await document.fonts.load(fontFace);
-        } catch (err) {
-          clearTimeout(timeOut)
-          clearInterval(poller);
-          errorFallback(err)
-          reject(err)
+      const recursiveFn = () => {
+        const currTime = Date.now();
+
+        if ((currTime - startTime) >= timeout) {
+          reject('font listener timeout ' + fontFace);
+        } else {
+          document.fonts.load(fontFace).then((fonts) => {
+            if (fonts.length >= 1) {
+              handleFontLoad(fontDetail);
+              resolve(true);
+            } else {
+              setTimeout(recursiveFn, interval);
+            }
+          }).catch((err) => {
+            errorFallback(err);
+            reject(err);
+          });
         }
-        if (document.fonts.check(fontFace)) {
-          clearTimeout(timeOut)
-          clearInterval(poller);
-          handleFontLoad(fontDetail)
-          resolve(true);
-        }
-      }, fontLoadConst.interval);
-      const timeOut = setTimeout(() => clearInterval(poller), fontLoadConst.timeout);
-    })
+      };
+      recursiveFn()
+    });
+
   }
 
   function loadFonts() {
@@ -52,13 +55,13 @@ export const fontListener = ({ fontNames, scope }) => {
   }
 
   function errorFallback(e) {
-    console.warn('error in omni font loader', e)
+    warn('error in omni font loader', e)
     parsedFont.forEach((fontInfo) => addClassName(convertToFVD(fontInfo)));
   }
 
   function handleApiError(error) {
-    console.info(`document.fonts API error: ${error}`);
-    console.info(`Replacing fonts instantly. FOUT handling failed.`);
+    info(`document.fonts API error: ${error}`);
+    info(`Replacing fonts instantly. FOUT handling failed.`);
     errorFallback(error);
   }
 

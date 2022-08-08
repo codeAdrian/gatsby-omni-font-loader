@@ -38,8 +38,7 @@ export const fontListener = ({ fontNames, scope, timeout, interval }) => {
             } else {
               setTimeout(recursiveFn, interval);
             }
-          }).catch((err) => {
-            errorFallback(err);
+          }).catch((err) => { 
             reject(err);
           });
         }

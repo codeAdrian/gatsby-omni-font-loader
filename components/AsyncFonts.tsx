@@ -14,7 +14,8 @@ export const AsyncFonts: React.FC<{ hrefs: string[] }> = ({ hrefs }) => {
       <link
         key={`stylesheet-${href}`}
         rel="stylesheet"
-        media="all"
+        media="print"
+        onLoad={`this.onload=null;this.removeAttribute('media');`}
         href={href}
       />
     )

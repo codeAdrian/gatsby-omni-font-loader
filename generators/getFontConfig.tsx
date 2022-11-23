@@ -24,7 +24,7 @@ export const getFontConfig = (
   if (arrayCheck(preloadConfig)) {
     preloadConfig.forEach(href => {
       headComponents.push(
-        <link key={`preload-${href}`} rel="stylesheet" href={href} />
+        <link key={`preload-${href}`} rel="preload" as="style" href={href} />
       )
     })
   }
